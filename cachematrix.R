@@ -1,19 +1,15 @@
-## Functions that cache the inverse of a matrix for rpog15
-##
-## Usage example:
-##
-## > source('cachematrix.R')
-## > m <- makeCacheMatrix(matrix(c(2, 0, 0, 2), c(2, 2)))
-## > cacheSolve(m)
-## [,1] [,2]
-## [1,]  0.5  0.0
-## [2,]  0.0  0.5
+## Assignment 2 for Coursera R-Programming (rpog015)
+## Matrix inversion is usally costly comutation and there may be some benefit to 
+## cahcing the inverse of a matrix rather than compute it repeatedly.  Following 
+## two functions create a special object that stores a numeric matrix 
+## and caches its inverse matrix. 
 
-## create a matrix that containing a function to
-## first, set the value of the matrix
-## second, get the value of the matrix
-## third, set the value of inverse of the matrix
-## and lastly, get the value of inverse of the matrix
+
+## First, create a matrix that containing a function to
+## 1. set the value of the matrix
+## 2. get the value of the matrix
+## 3. set the value of inverse of the matrix
+## 4. get the value of inverse of the matrix
 
 
 makeCacheMatrix <- function(x = matrix()) {
@@ -37,8 +33,13 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Calculate the inverse of the special "matrix" created with the above
-## function, reusing cached result if it is available
+
+## The following function returns the inverse of the matrix.  In the first stage,
+## it checks weather the inverse has already been computed.  
+## If the ans is yes, it will gets the result and skips the computation.  
+## but, if the ans is no, it will computes the inverse and set the value 
+## into the cache via setinverse function
+ 
 
 cacheSolve <- function(x, ...) {
   i <- x$getinverse()
@@ -52,27 +53,15 @@ cacheSolve <- function(x, ...) {
   i
 }
 
-## Write a short comment describing this function
-#---copied from somewhereelse
-# The following function returns the inverse of the matrix. It first checks if
-# the inverse has already been computed. If so, it gets the result and skips the
-# computation. If not, it computes the inverse, sets the value in the cache via
-# setinverse function.
 
-# This function assumes that the matrix is always invertible.
+## to test the above script, use the following code
+##
+## > source('cachematrix.R')
+## > m <- makeCacheMatrix(matrix(c(2, 0, 0, 10), c(2, 2)))
+## > cacheSolve(m)
 
+## output:
+## [,1] [,2]
+## [1,]  0.5  0.0
+## [2,]  0.0  0.1
 
-
-#-----------
-# Matrix inversion is usually a costly computation and there may be some benefit
-# to caching the inverse of a matrix rather than compute it repeatedly. The
-# following two functions are used to cache the inverse of a matrix.
-
-
-
-
-
-#testing 1
-
-
-#----------
