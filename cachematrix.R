@@ -11,7 +11,6 @@
 ## 3. set the value of inverse of the matrix
 ## 4. get the value of inverse of the matrix
 
-
 makeCacheMatrix <- function(x = matrix()) {
   
   i <- NULL
@@ -33,14 +32,12 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-
 ## The following function returns the inverse of the matrix.  In the first stage,
 ## it checks weather the inverse has already been computed.  
 ## If the ans is yes, it will gets the result and skips the computation.  
 ## but, if the ans is no, it will computes the inverse and set the value 
 ## into the cache via setinverse function
  
-
 cacheSolve <- function(x, ...) {
   i <- x$getinverse()
   if(!is.null(i)) {
@@ -64,4 +61,3 @@ cacheSolve <- function(x, ...) {
 ## [,1] [,2]
 ## [1,]  0.5  0.0
 ## [2,]  0.0  0.1
-
